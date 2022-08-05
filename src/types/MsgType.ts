@@ -1,0 +1,23 @@
+// https://github.com/itzngga/Roxy/blob/12cfb123a94cb786b5d7a44bb6ef1e49f0c3ed90/src/types/handler.d.ts#L3
+export enum MsgType {
+    text = "conversation",
+    extendedText = "extendedTextMessage",
+    contact = "contactMessage",
+    contactsArray = "contactsArrayMessage",
+    groupInviteMessage = "groupInviteMessage",
+    listMessage = "listMessage",
+    buttonsMessage = "buttonsMessage",
+    location = "locationMessage",
+    liveLocation = "liveLocationMessage",
+    image = "imageMessage",
+    video = "videoMessage",
+    sticker = "stickerMessage",
+    document = "documentMessage",
+    audio = "audioMessage",
+    product = "productMessage",
+    listResponse = "listResponseMessage",
+    buttonsResponse = "buttonsResponseMessage",
+    templateButtonReply = "templateButtonReplyMessage",
+    ephemeral = "ephemeralMessage",
+    viewOnce = "viewOnceMessage",
+}

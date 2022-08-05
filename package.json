@@ -1,0 +1,68 @@
+{
+  "name": "bot-whatsapp",
+  "version": "1.0.0",
+  "exports": "./index.js",
+  "license": "MIT",
+  "description": "Whatsapp bot",
+  "engines": {
+    "node": ">=14.16"
+  },
+  "scripts": {
+    "test": "ts-node ./src/test/index.ts --dev",
+    "lint": "eslint --fix --ext .ts,.json .",
+    "debug": "jest --runInBand --watchAll",
+    "dev": "ts-node ./src/index.ts",
+    "start": "yarn running",
+    "start:client": "node ./dist/lib/main.js --client",
+    "start:dev": "node ./dist/lib/main.js --dev",
+    "start:resetdb": "node ./dist/lib/main.js --resetdb",
+    "running": "yarn build && node ./dist/lib/running.js",
+    "build": "tsc -p ./tsconfig.json",
+    "prettier-format": "prettier --config .prettierrc \"lib/*.ts\" \"lib/**/*.ts\" \"lib/**/**/*.ts\" --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "bot-whatsapp"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/fluent-ffmpeg": "^2.1.20",
+    "@types/image-to-base64": "^2.1.0",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.0.0",
+    "@types/rimraf": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.7.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "^4.3.0",
+    "@hapi/boom": "^10.0.0",
+    "base64-to-image": "^1.0.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "file-type": "16.5.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^4.0.0",
+    "helmet": "^5.1.0",
+    "jimp": "^0.16.1",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0",
+    "pino": "^8.1.0",
+    "pino-pretty": "^8.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "rimraf": "^3.0.2",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1",
+    "ts-node": "^10.9.1",
+    "vm2": "^3.9.10",
+    "wa-sticker-formatter": "^4.3.2"
+  }
+}
