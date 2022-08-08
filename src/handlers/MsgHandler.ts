@@ -1,12 +1,13 @@
-import { MessageUpsertType, proto, MessageType, WASocket as Sock, GroupParticipant, downloadMediaMessage } from "@adiwajshing/baileys";
+import fs from 'fs';
+import path from 'path';
 import moment from "moment";
 import WaSticker, { StickerTypes } from "wa-sticker-formatter";
+import { MessageUpsertType, proto, MessageType, WASocket as Sock, GroupParticipant, downloadMediaMessage } from "@adiwajshing/baileys";
 
 import Whatsapp from '../core/ConnectWa';
-import path from 'path';
-import { sendText, downloadMediaWa, sendSticker, sendStickerFromImage, sendStickerFromVideo, sendButton, sendTemplateButton } from '../utils/functions';
 import { getBuffer, mp4ToWebp, sendMedia } from "../utils";
-import { unlinkSync } from "fs";
+import { sendText, downloadMediaWa, sendSticker, sendStickerFromImage, sendStickerFromVideo, sendButton, sendTemplateButton } from '../utils/functions';
+import { ICommand } from '../types/ICommand';
 
 moment.locale('jv');
 
@@ -27,6 +28,22 @@ export class MsgHandler {
         const chat = await this.simplified(mess.messages);
         if (true) await this.sock.sendReceipt(chat.from!, chat.participant!, [chat.id!], 'read');
         console.log(chat);
+
+        const command = fs.readdirSync(path.join(__dirname, '../lib/command'));
+        console.log(command);
+
+        const start: any = new Date();
+        command.forEach((v, i) => {
+            const Command = require('../lib/command/' + v)
+
+            const cmd: ICommand = new Command.default(chat as any);
+            if (cmd.command.some(v => v === chat.command)) {
+                cmd.execute();
+                console.log(new Date() as any - start + 'ms');
+            }
+        })
+        console.log(new Date() as any - start + 'ms');
+
 
         // Multi Session Whatsapp
         if (chat.isCmd && chat.command === 'tesbot') {
