@@ -263,7 +263,7 @@ export const sendMedia = (from: string, buff: string | Buffer, options: { captio
 ]
 const result = sendButton(from, buttons, {text: 'Teks utama', footer: 'Teks Bawah'})
  */
-export const sendButton = async (from: string, buttons: proto.IButton[], options?: { text?: string; footer?: string; }) => {
+export const sendButton = async (from: string, buttons: proto.Message.ButtonsMessage.IButton[], options?: { text?: string; footer?: string; }) => {
     const buttonMessage = {
         text: options?.text ? options?.text : '',
         footer: options?.footer ? options?.footer : '',
@@ -410,7 +410,7 @@ export const sendTemplateButtonWithImage = async (from: string, templateButtons:
 
 const result = await sendListMessage(from, sections, {title: 'Titlenya', text: 'Teks Utama', footer: 'Teks Bawah/Footer', butttonText: 'Teks Buttonnya'})
  */
-export const sendListMessage = async (from: string, sections: proto.ISection[], text: string, options: { title?: string; footer?: string; buttonText?: string; }) => {
+export const sendListMessage = async (from: string, sections: proto.Message.ListMessage.ISection[], text: string, options: { title?: string; footer?: string; buttonText?: string; }) => {
     const listMessage = {
         text: text,
         footer: options.footer,
@@ -430,7 +430,7 @@ export const sendListMessage = async (from: string, sections: proto.ISection[], 
  * @param {{title?: String, text?: String, footer?: String, buttonText?: String}} options 
  * @returns 
  */
-export const sendListMessageWithImage = async (from: string, sections: proto.ISection[], image: URL | Buffer, options: { title?: string; text?: string; footer?: string; buttonText?: string; }) => {
+export const sendListMessageWithImage = async (from: string, sections: proto.Message.ListMessage.ISection[], image: URL | Buffer, options: { title?: string; text?: string; footer?: string; buttonText?: string; }) => {
     if (typeof image === 'string') {
         const listMessage = {
             image: { url: image },
