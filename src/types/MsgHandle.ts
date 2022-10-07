@@ -1,6 +1,7 @@
 import { GroupMetadata, GroupParticipant, MessageUpsertType, proto } from "@adiwajshing/baileys";
 
 export interface ISimplified {
+    chat?: proto.IWebMessageInfo;
     chatMessage?: proto.IMessage | null | undefined;
     content: string;
     from?: string | null | undefined;
