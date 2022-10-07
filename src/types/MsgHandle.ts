@@ -59,7 +59,7 @@ export interface ISimplified {
     far: string | null;
     isCmd: boolean;
 
-    grettingTime: string;
+    grettingTime: string | null;
 }
 
 export interface Message {

@@ -66,9 +66,9 @@ export class MsgHandler {
 
     protected async simplified(msg: proto.IWebMessageInfo[]) {
         const chat = msg[0];
-        if (chat.message?.protocolMessage || chat.message?.senderKeyDistributionMessage) {
-            return { ...chat, type: Object.keys(chat.message)[0] as MessageType }
-        }
+        // if (chat.message?.protocolMessage || chat.message?.senderKeyDistributionMessage) {
+        //     return { ...chat, type: Object.keys(chat.message)[0] as MessageType }
+        // }
 
         const chatMessage = chat.message;
         const id = chat.key.id;
@@ -160,7 +160,7 @@ export class MsgHandler {
             ? message.startsWith(prefix)
             : message_prefix !== null ? message_prefix.startsWith(prefix) : false;
 
-        let grettingTime = '';
+        let grettingTime = null;
         if (time <= "03:30:00") {
             grettingTime = 'Selamat Malam'
         } else if (time <= "11:00:00") {

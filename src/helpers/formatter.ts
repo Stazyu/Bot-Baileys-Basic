@@ -16,6 +16,12 @@ function bytesToMb(x: string) {
 	return (n.toFixed(n < 10 && l > 0 ? 1 : 0) + ' ' + units[l]);
 }
 
+function millisToMinutesAndSeconds(millis: number) {
+	const minutes = Math.floor(millis / 60000);
+	const seconds = ((millis % 60000) / 1000).toFixed(0);
+	return minutes + ":" + (seconds < '10' ? '0' : '') + seconds;
+}
+
 // Formatter number 0 to 62
 function formatter(number: string, standard = "@c.us") {
 	let formatted = number;
@@ -37,4 +43,4 @@ function formatter(number: string, standard = "@c.us") {
 	return formatted;
 }
 
-export { bytesToMB, bytesToMb, formatter }
+export { bytesToMB, bytesToMb, millisToMinutesAndSeconds, formatter }

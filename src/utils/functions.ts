@@ -118,7 +118,7 @@ export const sendImage = async (from: string, buff: URL | Buffer, options?: { ca
  * @param {{ptt?: Boolean, msg?: String, mimetype?: String, mentions: String[]}} options Options Message => {ptt: Boolean, msg: WAMessage}
  * @returns 
  */
-export const sendAudio = async (from: string, buff: URL | Buffer, options?: { ptt?: boolean; msg?: proto.IWebMessageInfo; mimetype?: string; mentions?: string[]; }) => {
+export const sendAudio = async (from: string, buff: string | Buffer, options?: { ptt?: boolean; msg?: proto.IWebMessageInfo; mimetype?: string; mentions?: string[]; }) => {
     if (typeof buff === 'string') {
         const msg_result = await wa.sendMessage(from, { audio: { url: buff }, ptt: options?.ptt, mimetype: options?.mimetype, mentions: options?.mentions }, { quoted: options?.msg });
         return msg_result;
@@ -135,7 +135,7 @@ export const sendAudio = async (from: string, buff: URL | Buffer, options?: { pt
  * @param {{caption?: String, gifPlayback?: Boolean, jpegThumbnail?: String | URL, msg?: String, mentions: String[]}} options Options Message => {caption: teks, gifplayback: boolean, jpegThumbnail: url, msg: WAMessage}
  * @returns 
  */
-export const sendVideo = async (from: string, buff: URL | Buffer, options?: { caption?: string; gifPlayback?: boolean; jpegThumbnail?: string | URL; msg?: proto.IWebMessageInfo; mentions: string[]; }) => {
+export const sendVideo = async (from: string, buff: string | Buffer, options?: { caption?: string; gifPlayback?: boolean; jpegThumbnail?: string | URL; msg?: proto.IWebMessageInfo; mentions: string[]; }) => {
     if (typeof buff === 'string') {
         const msg_result = await wa.sendMessage(from, { caption: options?.caption, gifPlayback: options?.gifPlayback, video: { url: buff }, mentions: options?.mentions }, { quoted: options?.msg });
         return msg_result;
