@@ -16,7 +16,7 @@
     "start:client": "node ./dist/lib/main.js --client",
     "start:dev": "node ./dist/lib/main.js --dev",
     "start:resetdb": "node ./dist/lib/main.js --resetdb",
-    "running": "yarn build && node ./dist/lib/running.js",
+    "running": "yarn build && node ./dist/index.js",
     "build": "tsc -p ./tsconfig.json",
     "prettier-format": "prettier --config .prettierrc \"lib/*.ts\" \"lib/**/*.ts\" \"lib/**/**/*.ts\" --write"
   },
